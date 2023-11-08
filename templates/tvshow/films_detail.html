@@ -1,0 +1,66 @@
+{% include 'tvshow/header.html' %}
+<center>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title">{{object.title}}</h4>
+            <h6 class="card-subtitle mb-2 text-body-secondary">Оригинальное название: {{object.original_title}}</h6>
+            <img src="{{object.image.url}}" alt="">
+            <p class="card-text">Страна: {{object.country}}</p>
+            <p class="card-text">Режиссеры: {{object.director}}</p>
+            <p class="card-text">Жанр: {{object.genre}}</p>
+            <p class="card-text">Продолжительность: {{object.time}}</p>
+            <p class="card-text">Цикл: {{object.cycle}}</p>
+            <p class="card-text">В главных ролях: {{object.starring}}</p>
+            <p class="card-text">Описание: {{object.description}}</p>
+            <a href="{{object.url_film}}" class="card-link">Ссылка на фильм: {{object.url_film}}</a>
+            <p class="card-text">{{object.created_at}}</p>
+            <p class="card-text">{{object.type_tvshow}}</p>
+            <head>
+                {% load static %}
+                <!DOCTYPE html>
+                <html>
+                <meta charset="UTF-8">
+                <title>Оценки и комментарии</title>
+                <link rel="stylesheet" type="text/css" href="{% static 'style_reviews.css'%}">
+                <h1>Оценки и комментарии</h1>
+
+                {% for i in object.comment_object.all %}
+                <table border="1" cellpadding="5" cellspacing="5">
+                    <tr>
+                        <th>Оценка к фильму:</th>
+                        <th>Дата оценки:</th>
+                    </tr>
+                    <tr>
+                        <td>{{i.Text}}</td>
+                        <td>{{i.Created_at}}</td>
+                    </tr>
+                </table>
+                <hr>
+                {% endfor %}
+
+
+                {% for l in object.reviews.all %}
+                <table border="1" cellpadding="5" cellspacing="5">
+                    <tr>
+                        <th>Комментария:</th>
+                        <th>Оценка:</th>
+                        <th>Дата оценки:</th>
+                    </tr>
+                    <tr>
+                        <td>{{l.comment}}</td>
+                        <td>{{l.rate}}</td>
+                        <td>{{l.created_date}}</td>
+                    </tr>
+                </table>
+                <hr>
+                {% endfor %}
+
+            </head>
+            <button><a href="/films_detail/{{object.id}}/delete/">Удалить</a></button>
+            <button><a href="/films_detail/{{object.id}}/update/">Изменить</a></button>
+
+
+        </div>
+    </div>
+</center>
+{% include 'tvshow/footer.html' %}}

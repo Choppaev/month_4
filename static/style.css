@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.head {
+    padding: 50px;
+    display: flex;
+}
+
+body {
+    background: rgb(27, 27, 27);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    background: white;
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.cart-image {
+    position: absolute;
+    background-color: aqua;
+    height: 420px;
+    margin-bottom: 15px;
+    background-size: cover;
+}
+
